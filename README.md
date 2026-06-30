@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" width="120" alt="Spotify Logo">
+  <img src="logo-without_text.png" width="120" alt="Spotify Logo">
 </p>
 
 <h1 align="center">Spotify Player para VS Code</h1>
