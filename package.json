@@ -1,0 +1,93 @@
+{
+  "name": "spotify-player",
+  "displayName": "Spotify Player",
+  "description": "Um mini-player para o VS Code com atalhos de teclado e login completo com OAuth",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "spotify-player-sidebar",
+          "title": "Spotify",
+          "icon": "media/spotify-logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "spotify-player-sidebar": [
+        {
+          "id": "spotify-player.playlists",
+          "name": "Minhas Playlists"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "spotify-player.playlists",
+        "contents": "Para ver suas playlists e controlar a música, você precisa conectar sua conta.\n[Conectar ao Spotify](command:spotify-player.login)"
+      }
+    ],
+    "commands": [
+      {
+        "command": "spotify-player.login",
+        "title": "Spotify: Conectar Conta",
+        "icon": "$(account)"
+      },
+      {
+        "command": "spotify-player.play",
+        "title": "Spotify: Tocar/Pausar",
+        "icon": "$(play)"
+      },
+      {
+        "command": "spotify-player.next",
+        "title": "Spotify: Próxima Música",
+        "icon": "$(chevron-right)"
+      },
+      {
+        "command": "spotify-player.previous",
+        "title": "Spotify: Música Anterior",
+        "icon": "$(chevron-left)"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.125.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "esbuild": "^0.28.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^6.0.3",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}
