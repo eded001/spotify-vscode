@@ -27,7 +27,7 @@
       "spotify-player-sidebar": [
         {
           "id": "spotify-player.playlists",
-          "name": "Minhas Playlists"
+          "name": "Media player"
         }
       ]
     },
@@ -40,7 +40,7 @@
     "commands": [
       {
         "command": "spotify-player.login",
-        "title": "Spotify: Conectar Conta",
+        "title": "Spotify: Vincular conta",
         "icon": "$(account)"
       },
       {
