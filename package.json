@@ -9,9 +9,6 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "*"
-  ],
   "main": "./dist/extension.js",
   "contributes": {
     "viewsContainers": {
@@ -27,7 +24,14 @@
       "spotify-player-sidebar": [
         {
           "id": "spotify-player.playlists",
-          "name": "Media player"
+          "name": "Playlists",
+          "icon": "$(library)"
+        },
+        {
+          "type": "webview",
+          "id": "spotify-player.player",
+          "name": "Player",
+          "icon": "$(play)"
         }
       ]
     },
@@ -57,8 +61,22 @@
         "command": "spotify-player.previous",
         "title": "Spotify: Música Anterior",
         "icon": "$(chevron-left)"
+      },
+      {
+        "command": "spotify-player.refreshPlaylists",
+        "title": "Atualizar Playlists",
+        "icon": "$(refresh)"
       }
-    ]
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "spotify-player.refreshPlaylists",
+          "when": "view == spotify-player.playlists",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
